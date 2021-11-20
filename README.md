@@ -1,0 +1,2 @@
+# hihome-functions
+Firebase Functions
