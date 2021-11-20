@@ -13,7 +13,7 @@ admin.initializeApp();
  * @param {!Object} event Event payload.
  * @param {!Object} context Metadata for the event.
  */
-exports.createDeviceLog = functions.firestore
+exports.createDeviceLog = functions.region('southamerica-east1').firestore
     .document("{maybe}/{somedoc}/sections/{section}/devices/{device}")
     .onUpdate((change, context) => {
         const newValue = change.after.data();
