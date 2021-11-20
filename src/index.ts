@@ -28,7 +28,7 @@ exports.createDeviceLog = functions.region("southamerica-east1").firestore
             "name": newValue.name,
             "type": newValue.type,
             "value": newValue.value,
-            "time": admin.firestore.FieldValue.serverTimestamp,
+            "time": admin.firestore.FieldValue.serverTimestamp(),
         });
         // Get an object representing the document
         // e.g. {'name': 'Marie', 'age': 66};
