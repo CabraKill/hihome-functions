@@ -22,13 +22,13 @@ exports.createDeviceLog = functions.firestore
         if (newValue.value == previousValue.value) {
             return null;
         }
-        functions.logger.info("name: " + newValue.name, {structuredData: true});
-        const parent = change.after.ref.parent;
-        return parent.add({
+        // functions.logger.info("name: " + newValue.name, {structuredData: true});
+        const ref = change.after.ref;
+        return ref.collection("logs").add({
             "name": newValue.name,
             "type": newValue.type,
             "value": newValue.value,
-            "time": admin.database.ServerValue.TIMESTAMP.toString(),
+            "time": admin.firestore.FieldValue.serverTimestamp,
         });
         // Get an object representing the document
         // e.g. {'name': 'Marie', 'age': 66};
