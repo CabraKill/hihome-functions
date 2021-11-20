@@ -13,7 +13,7 @@ admin.initializeApp();
  * @param {!Object} event Event payload.
  * @param {!Object} context Metadata for the event.
  */
-exports.createDeviceLog = functions.region('southamerica-east1').firestore
+exports.createDeviceLog = functions.region("southamerica-east1").firestore
     .document("{maybe}/{somedoc}/sections/{section}/devices/{device}")
     .onUpdate((change, context) => {
         const newValue = change.after.data();
@@ -22,7 +22,7 @@ exports.createDeviceLog = functions.region('southamerica-east1').firestore
         if (newValue.value == previousValue.value) {
             return null;
         }
-        // functions.logger.info("name: " + newValue.name, {structuredData: true});
+        // functions.logger.info("a", {structuredData: true});
         const ref = change.after.ref;
         return ref.collection("logs").add({
             "name": newValue.name,
